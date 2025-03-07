@@ -1,5 +1,5 @@
 import streamlit as sl
-
+import pandas
 sl.set_page_config(layout='wide')
 col1,col2= sl.columns(2)
 with col1:
@@ -16,3 +16,13 @@ with col2:
     sl.title('Anazodo Joseph')
     sl.info(contents)
 sl.write("Below are some of the projecyts i've built. Feel free to contact me! https://www.udemy.com/course/the-python-mega-course/learn/lecture/34604130#overview")
+col3, col4 = sl.columns(2)
+
+df =pandas.read_csv('data.csv',sep=';')
+with col3:
+    for index,row in df[:10].iterrows():
+       sl.header(row['title'])
+
+with col4:
+    for index, rows in df[10:].iterrows():
+        sl.header(rows['title'])

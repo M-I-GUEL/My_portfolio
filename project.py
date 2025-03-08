@@ -16,13 +16,19 @@ with col2:
     sl.title('Anazodo Joseph')
     sl.info(contents)
 sl.write("Below are some of the projecyts i've built. Feel free to contact me! https://www.udemy.com/course/the-python-mega-course/learn/lecture/34604130#overview")
-col3, col4 = sl.columns(2)
+col3,empty_col,col4 = sl.columns([1.5,0.5,1.5])
 
 df =pandas.read_csv('data.csv',sep=';')
 with col3:
     for index,row in df[:10].iterrows():
        sl.header(row['title'])
+       sl.write(row['description'])
+       sl.image(f'images/{row['image']}')
+       sl.write(f'[Source Code]({row['url']})')
 
 with col4:
     for index, rows in df[10:].iterrows():
         sl.header(rows['title'])
+        sl.write(rows['description'])
+        sl.image(f'images/{row['image']}')
+        sl.write(f'[Source Code]({row['url']})')
